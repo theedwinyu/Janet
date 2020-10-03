@@ -8,7 +8,7 @@ class LandingPage extends Component {
     render() {
         return (
           <div className="landing-page-background">
-            <Card className="landing-page-intro-card">
+            <Card className="landing-page-intro-card box-shadow">
               <Title>
                 Take control of your financial future.
               </Title>
