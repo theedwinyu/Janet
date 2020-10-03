@@ -25,16 +25,16 @@ class Dashboard extends Component {
     };
 
     render() {
-        
-        if(this.state.loggedOut) {
-            return <Redirect to="/Login"/>  
+
+        if (this.state.loggedOut) {
+            return <Redirect to="/Login" />
         }
 
         const parsedCookie = JSON.parse(Cookie.get('loggedIn'));
         return (
             <div>
                 <p>{parsedCookie.user.displayName}</p>
-                <Button type="primary" onClick={this.handleSignOut} style={{borderRadius: '10px'}}>Sign out</Button>
+                <Button type="primary" onClick={this.handleSignOut} style={{ borderRadius: '10px' }}>Sign out</Button>
             </div>
         );
     }
