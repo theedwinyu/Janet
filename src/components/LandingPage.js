@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Row, Col, Card, Typography } from 'antd';
-import { Redirect } from 'react-router';
+import { Link } from 'react-router-dom';
 
 const { Title, Paragraph } = Typography;
 
@@ -18,9 +18,11 @@ class LandingPage extends Component {
                 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
                 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
               </Paragraph>
-              <Button onClick={() => <Redirect to="/Login" />}>
-                Start
-              </Button>
+              <Link to="/login">
+                <Button>
+                  Start
+                </Button>
+              </Link>
             </Card>
           </div>
         );
