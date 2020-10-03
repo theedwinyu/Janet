@@ -6,6 +6,7 @@ import LandingPage from './components/LandingPage';
 import { MasterDetail } from './components';
 import { MasterContainer, DetailContainer } from './containers';
 
+import Dashboard from './components/Dashboard';
 
 class App extends Component {
   render() {
@@ -20,6 +21,7 @@ class App extends Component {
                 <MasterDetail MasterType={MasterContainer} masterProps={{}}
                   DetailType={DetailContainer} detailProps={{}} />
               )} />
+            <Route exact path="/dashboard" component={Dashboard} />
           </Switch>
         </Router>
       </div>
