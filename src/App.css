@@ -1,7 +1,18 @@
 @import '~antd/dist/antd.css';
 
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+}
+
 .App {
   text-align: center;
+  height: 100%;
 }
 
 .App-logo {
@@ -32,6 +43,22 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.landing-page-background {
+  background: url(./assets/landingsplash.jpg);
+  background-size: cover;
+  height: 100%;
+}
+
+.landing-page-intro-card {
+  text-align: left;
+  width: 20%;
+  margin-left: 5%;
+  top: 25%;
+  -webkit-box-shadow: 4px 9px 21px 8px rgba(77,76,77,0.66);
+  -moz-box-shadow: 4px 9px 21px 8px rgba(77,76,77,0.66);
+  box-shadow: 4px 9px 21px 8px rgba(77,76,77,0.66);
 }
 
 .login-centered {
