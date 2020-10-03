@@ -3,7 +3,8 @@ import withFirebaseAuth from 'react-with-firebase-auth'
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import firebaseConfig from '../firebaseConfig';
-import { Button, Row, Col, Card } from 'antd';
+import { Button, Row, Col, Card, Typography } from 'antd';
+const { Title, Paragraph } = Typography;
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 const firebaseAppAuth = firebaseApp.auth();
@@ -14,41 +15,40 @@ const providers = {
 
 class Login extends Component {
     render() {
-        const {
-            user,
-            signOut,
-            signInWithGoogle,
-        } = this.props;
+      const {
+          user,
+          signOut,
+          signInWithGoogle,
+      } = this.props;
 
-        return (
-            <div className="App">
-                <header className="App-header" style={{ backgroundColor: '#4c29ff'}}>
+      return (
+        <div className="login-page-background">
+          <span className="login-wrapper box-shadow">
+            <Col span={8} className="login-left">
+              <div className="login-centered">
+                {
+                  user
+                  ? <p>Hello, {user.displayName}</p>
+                  : <p>Please sign in.</p>
+                }
 
-                    <Card bordered={false} style={{ backgroundColor: '#4c29ff'}}>
-                        <Row className="box-shadow" style={{ width:'100%', height:'100%' }}>
-                            <Col span={8} style={{ backgroundColor:'white', height: '100vh', color:'black' }}>
-                                <Card className="box-shadow login-centered">
-                                    <div>
-                                    {
-                                        user
-                                        ? <p>Hello, {user.displayName}</p>
-                                        : <p>Please sign in.</p>
-                                    }
-
-                                    {
-                                        user
-                                        ? <Button type="primary" onClick={signOut} style={{borderRadius: '10px'}}>Sign out</Button>
-                                        : <Button type="primary" onClick={signInWithGoogle} style={{borderRadius: '10px'}}>Sign in with Google!</Button>
-                                    }
-                                    </div>
-                                </Card>
-                            </Col>
-                            <Col span={16} className="login-right-background" />
-                        </Row>
-                    </Card>
-                </header>
-            </div>
-        );
+                {
+                  user
+                  ?
+                  <Button type="primary" onClick={signOut} style={{borderRadius: '10px'}}>
+                    Sign out
+                  </Button>
+                  :
+                  <Button type="primary" onClick={signInWithGoogle} style={{borderRadius: '10px'}}>
+                    Sign in with Google!
+                  </Button>
+                }
+              </div>
+            </Col>
+            <Col span={16} className="login-right-background" />
+          </span>
+        </div>
+      );
     }
 }
 
