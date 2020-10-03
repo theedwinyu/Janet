@@ -4,11 +4,13 @@ import * as firebase from 'firebase/app';
 import 'firebase/database'
 import 'firebase/auth';
 import firebaseConfig from '../firebaseConfig';
-import { Button, Row, Col, Card, Modal, Select } from 'antd';
+import { Button, Row, Col, Card, Modal, Select, Typography } from 'antd';
 
 import Cookie from "js-cookie";
 
 import { Redirect} from "react-router-dom";
+
+const { Title, Paragraph } = Typography;
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 const firebaseAppAuth = firebaseApp.auth();
@@ -106,23 +108,16 @@ class Login extends Component {
         }
 
         return (
-            <div className="App">
-                <header className="App-header" style={{ backgroundColor: '#4c29ff'}}>
-
-                    <Card bordered={false} style={{ backgroundColor: '#4c29ff'}}>
-                        <Row className="box-shadow" style={{ width:'100%', height:'100%' }}>
-                            <Col span={8} style={{ backgroundColor:'white', height: '100vh', color:'black' }}>
-                                <Card className="box-shadow login-centered">
-                                    <div>
-                                        <p>Please sign in.</p>
-                                        <Button type="primary" onClick={signInWithGoogle} style={{borderRadius: '10px'}}>Sign in with Google!</Button>
-                                    </div>
-                                </Card>
-                            </Col>
-                            <Col span={16} className="login-right-background" />
-                        </Row>
-                    </Card>
-
+            <div className="login-page-background">
+                <span className="login-wrapper box-shadow">
+                    <Col span={8} className="login-left">
+                        <div className="login-centered"></div>
+                            <p>Please sign in.</p>
+                            <Button type="primary" onClick={signInWithGoogle} style={{borderRadius: '10px'}}>
+                                Sign in with Google!
+                            </Button>                        </Col>
+                    <Col span={16} className="login-right-background" />
+                        
                     <Modal
                         title="Select your credit score"
                         visible={this.state.visible && user}
@@ -136,7 +131,7 @@ class Login extends Component {
                             <Select.Option value="excellent">740-850</Select.Option>
                         </Select>
                     </Modal>
-                </header>
+                </span>
             </div>
         );
     }

@@ -27,7 +27,7 @@ class Dashboard extends Component {
     render() {
         
         if(this.state.loggedOut) {
-            return <Redirect to="/"/>  
+            return <Redirect to="/Login"/>  
         }
 
         const parsedCookie = JSON.parse(Cookie.get('loggedIn'));
