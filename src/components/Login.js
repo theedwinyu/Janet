@@ -4,7 +4,7 @@ import * as firebase from 'firebase/app';
 import 'firebase/database'
 import 'firebase/auth';
 import firebaseConfig from '../firebaseConfig';
-import { Button, Row, Col, Card, Modal, Select, Typography } from 'antd';
+import { Button, Col, Modal, Select, Typography } from 'antd';
 
 import Cookie from "js-cookie";
 
@@ -30,6 +30,7 @@ class Login extends Component {
             redirect: false,
             showModal: false,
             creditScoreRange: 'good',
+            progressData: {},
         }
         this.checkIfUserExists = this.checkIfUserExists.bind(this);
         this.addUserToDatabase = this.addUserToDatabase.bind(this);
@@ -39,7 +40,10 @@ class Login extends Component {
         if(this.props.user) {
             await this.checkIfUserExists();
             if(this.state.exists) {
-                Cookie.set("loggedIn", this.props.user);
+                Cookie.set("loggedIn", {
+                    'user': this.props.user,
+                    'progressData': this.state.progressData,
+                });
                 this.setState({
                     redirect: true,
                 });
@@ -52,12 +56,15 @@ class Login extends Component {
     async checkIfUserExists() {
         if(this.props.user) {
             let snapshotExists = false;
+            let retrievedData = {}
             await firebaseAppDatabase.ref(`users/${this.props.user.uid}`).once("value", snapshot => {
                 if (snapshot.exists()){
                     snapshotExists = true;
+                    retrievedData = snapshot.val();
                 }
             });
             this.state.exists = snapshotExists;
+            this.state.progressData = retrievedData;
         }
     }
 
@@ -68,6 +75,7 @@ class Login extends Component {
             'course2': false,
             'course3': false,
         }
+        this.state.progressData = progress;
         await firebaseAppDatabase.ref(`users/${this.props.user.uid}`).set(progress);
     }
 
@@ -83,7 +91,10 @@ class Login extends Component {
 
     handleOk = async e => {
         await this.addUserToDatabase(this.state.creditScoreRange);
-        Cookie.set("loggedIn", this.props.user);
+        Cookie.set("loggedIn", {
+            'user': this.props.user,
+            'progressData': this.state.progressData,
+        });
         this.setState({
             visible: false,
             redirect: true,
@@ -115,7 +126,8 @@ class Login extends Component {
                             <p>Please sign in.</p>
                             <Button type="primary" onClick={signInWithGoogle} style={{borderRadius: '10px'}}>
                                 Sign in with Google!
-                            </Button>                        </Col>
+                            </Button>
+					</Col>
                     <Col span={16} className="login-right-background" />
                         
                     <Modal
