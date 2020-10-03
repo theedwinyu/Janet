@@ -1,4 +1,4 @@
-import { ExampleState } from './example.model';
+import { ExampleState, CourseDetails } from './example.model';
 
 export const initialState = new ExampleState({
     0: { id: 0, title: 'What\'s in a Credit Score?', description: 'Find out what affects your score' },
@@ -15,3 +15,4 @@ export const example = (state = initialState, action: any): ExampleState => {
             return state
     }
 };
+

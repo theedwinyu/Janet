@@ -12,6 +12,7 @@ export interface MasterDetailProps {
 }
 
 export const MasterDetail: React.FC<MasterDetailProps> = (props) => {
+    console.log(props)
     let { path } = useRouteMatch() as any;
     const master = (
         <props.MasterType {...props.masterProps}
