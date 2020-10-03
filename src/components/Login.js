@@ -15,40 +15,40 @@ const providers = {
 
 class Login extends Component {
     render() {
-      const {
-          user,
-          signOut,
-          signInWithGoogle,
-      } = this.props;
+        const {
+            user,
+            signOut,
+            signInWithGoogle,
+        } = this.props;
 
-      return (
-        <div className="login-page-background">
-          <span className="login-wrapper box-shadow">
-            <Col span={8} className="login-left">
-              <div className="login-centered">
-                {
-                  user
-                  ? <p>Hello, {user.displayName}</p>
-                  : <p>Please sign in.</p>
-                }
+        return (
+            <div className="login-page-background">
+                <span className="login-wrapper box-shadow">
+                    <Col span={8} className="login-left">
+                        <div className="login-centered">
+                            {
+                                user
+                                    ? <p>Hello, {user.displayName}</p>
+                                    : <p>Please sign in.</p>
+                            }
 
-                {
-                  user
-                  ?
-                  <Button type="primary" onClick={signOut} style={{borderRadius: '10px'}}>
-                    Sign out
+                            {
+                                user
+                                    ?
+                                    <Button type="primary" onClick={signOut} style={{ borderRadius: '10px' }}>
+                                        Sign out
                   </Button>
-                  :
-                  <Button type="primary" onClick={signInWithGoogle} style={{borderRadius: '10px'}}>
-                    Sign in with Google!
+                                    :
+                                    <Button type="primary" onClick={signInWithGoogle} style={{ borderRadius: '10px' }}>
+                                        Sign in with Google!
                   </Button>
-                }
-              </div>
-            </Col>
-            <Col span={16} className="login-right-background" />
-          </span>
-        </div>
-      );
+                            }
+                        </div>
+                    </Col>
+                    <Col span={16} className="login-right-background" />
+                </span>
+            </div>
+        );
     }
 }
 

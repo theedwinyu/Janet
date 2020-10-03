@@ -1,8 +1,11 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Login from './components/Login';
 import LandingPage from './components/LandingPage';
+import { MasterDetail } from './components';
+import { MasterContainer, DetailContainer } from './containers';
+
 
 class App extends Component {
   render() {
@@ -12,6 +15,11 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={LandingPage} />
             <Route path="/Login" component={Login} />
+            <Route path="/courselist"
+              render={props => (
+                <MasterDetail MasterType={MasterContainer} masterProps={{}}
+                  DetailType={DetailContainer} detailProps={{}} />
+              )} />
           </Switch>
         </Router>
       </div>
