@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { RouteProps } from 'react-router-dom';
 import { useRouteMatch } from 'react-router-dom';
-import { Header, ListItemLink } from '../../components';
+import { Header, ListItemLink, ProfileCard } from '../../components';
 import { Items, Item, getExampleItems, AppStore } from '../../state';
 
 export interface MasterProps extends Items {
@@ -19,7 +19,8 @@ export const MasterContainer: React.FC<MasterProps> = (props) => {
     );
     return (
         <React.Fragment>
-            <Header title="Master" hideBackButton={true} />
+            <Header title="Profile"></Header>
+            <ProfileCard />
             <ul>
                 {listItems}
             </ul>
