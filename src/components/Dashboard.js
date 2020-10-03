@@ -33,7 +33,7 @@ class Dashboard extends Component {
         const parsedCookie = JSON.parse(Cookie.get('loggedIn'));
         return (
             <div>
-                <p>{parsedCookie.displayName}</p>
+                <p>{parsedCookie.user.displayName}</p>
                 <Button type="primary" onClick={this.handleSignOut} style={{borderRadius: '10px'}}>Sign out</Button>
             </div>
         );
