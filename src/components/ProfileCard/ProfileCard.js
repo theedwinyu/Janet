@@ -42,18 +42,18 @@ export class ProfileCard extends React.Component {
 
         return (
             <div>
-                <Card style={{margin:'5vh'}}>
-                <Row justify="center">
-                    <Avatar size={100} src={parsedCookie.user.photoURL}/>
-                </Row>
-                <p></p>
-                <Row justify="center">
-                    <Text strong>Credit score: {creditScoreRangeMap[creditScoreRange]}</Text>
-                </Row>
-                <p></p>
-                <Row justify="center">
-                    <Button type="primary" onClick={this.handleSignOut} style={{borderRadius: '10px'}}>Sign out</Button>
-                </Row>
+                <Card style={{ margin: '5vh' }}>
+                    <Row justify="center">
+                        <Avatar size={100} src={parsedCookie.user.photoURL} />
+                    </Row>
+                    <p></p>
+                    <Row justify="center">
+                        <Text strong>Credit score: {creditScoreRangeMap[creditScoreRange]}</Text>
+                    </Row>
+                    <p></p>
+                    <Row justify="center">
+                        <Button type="primary" onClick={this.handleSignOut} style={{ borderRadius: '10px' }}>Sign out</Button>
+                    </Row>
                 </Card>
             </div>
         )
