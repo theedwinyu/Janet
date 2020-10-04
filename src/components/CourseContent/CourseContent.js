@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import path1 from "../../md-files/1.md";
@@ -21,42 +21,47 @@ export const CourseContent = props => {
         imagename: "",
         title: "",
     })
+    async function fetchData() {
+        if (id.id == 0) {
+            await fetch(path1).then((response) => response.text()).then((text) => {
+                setState({ terms: text, imagename: "image1", title: "What's in a Credit Score?" })
+            });
+        }
+        else if (id.id == 1) {
+            await fetch(path2).then((response) => response.text()).then((text) => {
+                setState({ terms: text, imagename: "image2", title: "Financial Planning" })
+            });
+        }
+        else if (id.id == 2) {
+            await fetch(path3).then((response) => response.text()).then((text) => {
+                setState({ terms: text, title: "Financial Goals -- Planning for Your Next Big Purchase" })
+            });
+        }
+        else if (id.id == 3) {
+            await fetch(path4).then((response) => response.text()).then((text) => {
+                setState({ terms: text, title: "Creating and Implementing a Budget" })
+            });
+        }
+        else if (id.id == 4) {
+            await fetch(poorPath).then((response) => response.text()).then((text) => {
+                setState({ terms: text, imagename: "image3", title: "Improve Your Poor Credit Score" })
+            });
+        }
+        else if (id.id == 5) {
+            await fetch(goodPath).then((response) => response.text()).then((text) => {
+                setState({ terms: text, imagename: "image3", title: "Improve Your Good Credit Score" })
+            });
+        }
+        else if (id.id == 6) {
+            await fetch(excellentPath).then((response) => response.text()).then((text) => {
+                setState({ terms: text, imagename: "image3", title: "Maintain Your Excellent Credit Score" })
+            });
+        }
+    }
 
-    if (id.id == 0) {
-        fetch(path1).then((response) => response.text()).then((text) => {
-            setState({ terms: text, imagename: "image1", title: "What's in a Credit Score?" })
-        })
-    }
-    else if (id.id == 1) {
-        fetch(path2).then((response) => response.text()).then((text) => {
-            setState({ terms: text, imagename: "image2", title: "Financial Planning" })
-        })
-    }
-    else if (id.id == 2) {
-        fetch(path3).then((response) => response.text()).then((text) => {
-            setState({ terms: text, title: "Financial Goals -- Planning for Your Next Big Purchase" })
-        })
-    }
-    else if (id.id == 3) {
-        fetch(path4).then((response) => response.text()).then((text) => {
-            setState({ terms: text, title: "Creating and Implementing a Budget" })
-        })
-    }
-    else if (id.id == 4) {
-        fetch(poorPath).then((response) => response.text()).then((text) => {
-            setState({ terms: text, imagename: "image3", title: "Improve Your Poor Credit Score" })
-        })
-    }
-    else if (id.id == 5) {
-        fetch(goodPath).then((response) => response.text()).then((text) => {
-            setState({ terms: text, imagename: "image3", title: "Improve Your Good Credit Score" })
-        })
-    }
-    else if (id.id == 6) {
-        fetch(excellentPath).then((response) => response.text()).then((text) => {
-            setState({ terms: text, imagename: "image3", title: "Maintain Your Excellent Credit Score" })
-        })
-    }
+    useEffect(() => {
+        fetchData();
+    }, [id.id]);
 
 
     return (
