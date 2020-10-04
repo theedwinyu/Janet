@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown'
-import termsFrPath from "../../md-files/1.md"
+import path1 from "../../md-files/1.md"
+import path2 from "../../md-files/2.md"
 
 
 export const CourseContent = props => {
@@ -13,9 +14,28 @@ export const CourseContent = props => {
         terms: null
     })
 
-    fetch(termsFrPath).then((response) => response.text()).then((text) => {
-        setState({ terms: text })
-    })
+
+    if (id.id == 0) {
+        fetch(path1).then((response) => response.text()).then((text) => {
+            setState({ terms: text })
+        })
+    }
+    else if (id.id == 1) {
+        fetch(path2).then((response) => response.text()).then((text) => {
+            setState({ terms: text })
+        })
+    }
+    else if (id.id == 2) {
+        fetch(path2).then((response) => response.text()).then((text) => {
+            setState({ terms: text })
+        })
+    }
+    else if (id.id == 3) {
+        fetch(path2).then((response) => response.text()).then((text) => {
+            setState({ terms: text })
+        })
+    }
+
 
     return (
         <div>
