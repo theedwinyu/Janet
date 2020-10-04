@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Card, Typography, PageHeader, Carousel } from 'antd';
 import { Link } from 'react-router-dom';
+import { PlayCircleOutlined } from '@ant-design/icons';
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -45,8 +46,8 @@ class LandingPage extends Component {
             <Text>Get your credit score <a href="https://creditwise.capitalone.com/home">here</a> and start your journey today!</Text>
             <br></br>
             <br></br>
-            <Link to="/Login">
-              <Button>
+            <Link to="/login">
+              <Button icon={<PlayCircleOutlined />}>
                 Get Started!
               </Button>
             </Link>

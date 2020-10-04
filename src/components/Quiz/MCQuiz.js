@@ -1,14 +1,21 @@
 import React, { Component } from 'react';
-import {Modal, Radio, Input, Button} from 'antd';
+import { Modal, Radio, Button, notification } from 'antd';
 import * as firebase from 'firebase/app';
 import 'firebase/database'
 import Cookie from "js-cookie";
 
 const firebaseAppDatabase = firebase.database();
 
+const openNotificationWithIcon = (type, message, description) => {
+    notification[type]({
+        message,
+        description
+    });
+};
+
 class MCQuiz extends Component {
     constructor(props) {
-        super();
+        super(props);
         this.state = {
             value: 1,
             visible: false,
@@ -21,27 +28,43 @@ class MCQuiz extends Component {
         });
     };
 
-    handleOk = e => {
-        console.log(this.state.value);
-        console.log(e);
-        this.setState({
-            visible: false,
-        });
+    handleOk = async e => {
+        
+        if(this.isCorrectAnswer()) {
+            let parsedCookie = JSON.parse(Cookie.get("loggedIn"));
+            if(parsedCookie.progressData[this.props.courseNumber] == false) {
+                //update progress bar
+                parsedCookie.progressData[this.props.courseNumber] = true;
+                Cookie.set("loggedIn", parsedCookie);
+                await firebaseAppDatabase.ref(`users/${parsedCookie.user.uid}/${this.props.courseNumber}`).set(true);
+                this.props.setState({
+                    test: this.props.state.test+1
+                });
+            }
+            this.setState({
+                visible: false,
+            });
+            openNotificationWithIcon('success', 'Correct answer!', 'Good job! You have passed the course!');
+        } else {
+            openNotificationWithIcon('error', 'Wrong answer!', 'Please try again!');
+        }        
     };
     
     handleCancel = e => {
-        console.log(e);
         this.setState({
             visible: false,
         });
     };
 
     onChange = e => {
-        console.log('radio checked', e.target.value);
         this.setState({
             value: e.target.value,
         });
     };
+
+    isCorrectAnswer() {
+        return this.state.value === this.props.correctAnswer;
+    }
 
     render() {
         const radioStyle = {
@@ -56,8 +79,6 @@ class MCQuiz extends Component {
             optionB,
             optionC,
             optionD,
-            correctAnswer,
-            courseNumber,
         } = this.props;
         return (
             <div>

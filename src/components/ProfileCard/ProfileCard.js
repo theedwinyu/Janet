@@ -6,6 +6,7 @@ import * as firebase from 'firebase/app';
 import 'firebase/auth';
 
 import { Avatar, Row, Typography, Button, Card, Divider } from 'antd';
+import { LogoutOutlined } from '@ant-design/icons';
 
 const { Text, Title } = Typography;
 
@@ -33,7 +34,7 @@ export class ProfileCard extends React.Component {
 
     render() {
         if (this.state.loggedOut) {
-            return <Redirect to="/Login" />
+            return <Redirect to="/login" />
         }
 
         const parsedCookie = JSON.parse(Cookie.get('loggedIn'));
@@ -56,7 +57,7 @@ export class ProfileCard extends React.Component {
                 </Row>
                 <p></p>
                 <Row justify="center">
-                    <Button type="primary" onClick={this.handleSignOut} style={{borderRadius: '10px'}}>Sign out</Button>
+                    <Button type="primary" onClick={this.handleSignOut} style={{borderRadius: '20px'}} icon={<LogoutOutlined />}>Sign out</Button>
                 </Row>
                 </Card>
             </div>

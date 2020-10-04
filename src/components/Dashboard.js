@@ -76,11 +76,11 @@ class Dashboard extends Component {
     render() {
 
         if (this.state.loggedOut) {
-            return <Redirect to="/Login" />
+            return <Redirect to="/login" />
         }
 
         const parsedCookie = JSON.parse(Cookie.get('loggedIn'));
-        console.log(parsedCookie.user);
+        
         return (
             <div className="login-page-background">
                 <span className="login-wrapper box-shadow">
