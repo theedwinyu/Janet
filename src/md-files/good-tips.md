@@ -1,5 +1,3 @@
-### Boosting a Good Credit Score
-
 1. Pay down your existing debt. 
 
     Paying down existing debt can help your credit score in the short term because it lowers your overall credit utilization ratio, which is calculated by dividing the amount of revolving credit you are currently using by the total of your available revolving credit limits. A low credit utilization ratio shows lenders you're using less of your available credit. Credit utilization accounts for 30% of your FICO® Score, and lowering it may quickly help to increase your credit scores.

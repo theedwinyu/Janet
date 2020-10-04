@@ -25,39 +25,39 @@ export const MasterDetail: React.FC<MasterDetailProps> = (props) => {
             data-test="Detail" setState = {setState} state={state}/>);
 
     return (
-        <span style={{backgroundColor: '#c9fcc7', width:'100%', height:'100%', display: 'flex'}}>
-        <Media query={mediaQueries.md}>
-            {matches =>
-                matches ? (
-                    <Switch>
-                        <Route exact path={`${path}`}>
-                            {master}
-                        </Route>
-                        <Route path={`${path}/detail/:id`}>
-                            {detail}
-                        </Route>
-                    </Switch>
-                ) : (
-                        <section className={styles.component}>
-                            <section className={styles.master}>
-                                <Route path={`${path}`}>
-                                    {master}
-                                </Route>
-                            </section>
-                            <section className={styles.detail}>
-                                <Switch>
-                                    <Route exact path={`${path}`}>
-                                        {detail}
+        <span style={{ backgroundColor: '#acd2e0', width: '100%', height: '100%', display: 'flex' }}>
+            <Media query={mediaQueries.md}>
+                {matches =>
+                    matches ? (
+                        <Switch>
+                            <Route exact path={`${path}`}>
+                                {master}
+                            </Route>
+                            <Route path={`${path}/detail/:id`}>
+                                {detail}
+                            </Route>
+                        </Switch>
+                    ) : (
+                            <section className={styles.component}>
+                                <section className={styles.master}>
+                                    <Route path={`${path}`}>
+                                        {master}
                                     </Route>
-                                    <Route path={`${path}/detail/:id`}>
-                                        {detail}
-                                    </Route>
-                                </Switch>
+                                </section>
+                                <section className={styles.detail}>
+                                    <Switch>
+                                        <Route exact path={`${path}`}>
+                                            {detail}
+                                        </Route>
+                                        <Route path={`${path}/detail/:id`}>
+                                            {detail}
+                                        </Route>
+                                    </Switch>
+                                </section>
                             </section>
-                        </section>
-                    )
-            }
-        </Media>
-        </span> 
+                        )
+                }
+            </Media>
+        </span>
     );
 };

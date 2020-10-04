@@ -1,5 +1,3 @@
-### How to Raise a Poor Credit Score
-
 1. Pay Your Bills on Time
 
     Payment history is the largest contributor to your credit score, accounting for 35% of your FICO® Score. One of the best ways to ensure you're never late is to set up autopay for recurring bills, such as student loans and car payments. Your bill will come directly from your bank account on the day it's due, meaning you don't have to remember to log in to a payment portal or send a check. Ensure you have enough money in your checking account to cover your payments, though, or you could be subject to fees.
