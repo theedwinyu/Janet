@@ -21,6 +21,7 @@ export const MasterDetail: React.FC<MasterDetailProps> = (props) => {
             data-test="Detail" />);
 
     return (
+        <span style={{backgroundColor: '#c9fcc7', width:'100%', height:'100%', display: 'flex'}}>
         <Media query={mediaQueries.md}>
             {matches =>
                 matches ? (
@@ -53,5 +54,6 @@ export const MasterDetail: React.FC<MasterDetailProps> = (props) => {
                     )
             }
         </Media>
+        </span> 
     );
 };

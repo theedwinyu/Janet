@@ -5,9 +5,9 @@ import Cookie from "js-cookie";
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 
-import { Avatar, Row, Typography, Button, Card } from 'antd';
+import { Avatar, Row, Typography, Button, Card, Divider } from 'antd';
 
-const { Text } = Typography;
+const { Text, Title } = Typography;
 
 const creditScoreRangeMap = {
     'poor': '300-669',
@@ -42,7 +42,11 @@ export class ProfileCard extends React.Component {
 
         return (
             <div>
-                <Card style={{margin:'5vh'}}>
+                <Card className='box-shadow' style={{margin:'5vh'}}>
+                <Row justify="center">
+                    <Title level={4}>{name}</Title>
+                </Row>
+                <Divider />
                 <Row justify="center">
                     <Avatar size={100} src={parsedCookie.user.photoURL}/>
                 </Row>
