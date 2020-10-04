@@ -11,13 +11,16 @@ export interface DetailProps {
 }
 
 export const DetailContainer: React.FC<DetailProps> = (props) => {
-    const id = useParams();
+    let id = useParams();
 
+    if (Object.keys(id).length === 0) {
+        id = { id: 0 };
+    }
     return (
         <section className={styles.component}>
             <main className={styles.main}>
                 <div className={styles.text}>
-                    <CourseContent id={id}></CourseContent>
+                    <CourseContent id={id == undefined ? 0 : id}></CourseContent>
                 </div>
             </main>
         </section>
