@@ -66,6 +66,7 @@ export const CourseContent = props => {
             <Card title={state.title}>
                 <div class={state.imagename} style={{ marginBottom: "10%" }}></div>
                 <ReactMarkdown source={state.terms} />
+                {props.quiz}
             </Card>
         </div >
     )
