@@ -23,13 +23,13 @@ export const ListItem: React.FC<ListItemProps> = (props) => {
                     {props.item.description ? props.item.description : listItemNoDataMessage}
                 </h2>
 
-                <p >
+                {/* <p >
                     {props.item.description ? props.item.description : listItemNoDataMessage}
                 </p>
 
                 <p>
                     {props.item.description ? props.item.description : listItemNoDataMessage}
-                </p>
+                </p> */}
 
             </div>
 

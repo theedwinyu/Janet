@@ -53,9 +53,10 @@ html, body {
 
 .landing-page-intro-card {
   text-align: left;
-  width: 20%;
+  width: 30%;
   margin-left: 5%;
   top: 25%;
+  max-height: 70%;
 }
 
 .login-page-background {
