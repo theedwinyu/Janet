@@ -106,8 +106,7 @@ export const DetailContainer: React.FC<DetailProps> = (props) => {
         <section className={styles.component}>
             <main className={styles.main}>
                 <div className={styles.text}>
-                    <CourseContent></CourseContent>
-                    {quiz}
+                    <CourseContent quiz={quiz} />
                 </div>
             </main>
         </section >
