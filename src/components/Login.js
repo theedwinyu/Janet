@@ -4,6 +4,7 @@ import * as firebase from 'firebase/app';
 import 'firebase/database'
 import 'firebase/auth';
 import firebaseConfig from '../firebaseConfig';
+import janetLogo from '../assets/janet_card.png';
 import { Button, Col, Modal, Select, Typography } from 'antd';
 
 import Cookie from "js-cookie";
@@ -115,18 +116,22 @@ class Login extends Component {
         } = this.props;
 
         if(this.state.redirect) {
-            return <Redirect to="dashboard"/> 
+            return <Redirect to="courselist"/> 
         }
 
         return (
             <div className="login-page-background">
                 <span className="login-wrapper box-shadow">
                     <Col span={8} className="login-left">
-                        <div className="login-centered"></div>
-                            <p>Please sign in.</p>
-                            <Button type="primary" onClick={signInWithGoogle} style={{borderRadius: '10px'}}>
+                        <div className="login-centered" style={{marginTop:'15vh'}}>
+							<img src={janetLogo} style={{width: '50%', height: 'auto'}}/>
+							<Title>Welcome to Janet!</Title>
+							<br></br>
+							<br></br>
+                            <Button type="primary" onClick={signInWithGoogle} style={{borderRadius: '20px'}}>
                                 Sign in with Google!
                             </Button>
+						</div>
 					</Col>
                     <Col span={16} className="login-right-background" />
                         
