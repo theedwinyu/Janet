@@ -47,17 +47,17 @@ export const CourseContent = props => {
     }
     else if (id.id == 4) {
         fetch(poorPath).then((response) => response.text()).then((text) => {
-            setState({ terms: text })
+            setState({ terms: text ,imagename:"image3"})
         })
     }
     else if (id.id == 5) {
         fetch(goodPath).then((response) => response.text()).then((text) => {
-            setState({ terms: text })
+            setState({ terms: text ,imagename:"image3"})
         })
     }
     else if (id.id == 6) {
         fetch(excellentPath).then((response) => response.text()).then((text) => {
-            setState({ terms: text })
+            setState({ terms: text ,imagename:"image3"})
         })
     }
 
