@@ -45,6 +45,22 @@ html, body {
   }
 }
 
+.image1 {
+  background: url(./assets/m1image.JPG);
+  background-size: auto;
+  height: 430px;
+  width: 450px;
+}
+
+.image2 {
+  background: url(./assets/m2image.PNG);
+  background-size: auto;
+  height: 430px;
+  width: 450px;
+}
+
+
+
 .landing-page-background {
   background: url(./assets/landingsplash.jpg);
   background-size: cover;
