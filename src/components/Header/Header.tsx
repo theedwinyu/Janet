@@ -4,6 +4,9 @@ import Media from 'react-media';
 import { mediaQueries } from '../../utils';
 import styles from './Header.module.scss';
 
+import { Typography } from 'antd';
+const { Title } = Typography;
+
 export interface HeaderProps {
     title: string,
     hideBackButton?: boolean
@@ -27,9 +30,10 @@ export const Header: React.FC<HeaderProps> = (props) => {
                     )}
             </Media>
 
-            <h1 data-test="HeaderTitle">
+            {/* <h1 data-test="HeaderTitle" >
                 {props.title || headerEmptyTitle}
-            </h1>
+            </h1> */}
+            <Title style={{fontSize: '28px'}}>{props.title}</Title>
 
         </div>
     );

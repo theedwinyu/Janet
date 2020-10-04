@@ -5,7 +5,7 @@ import { useRouteMatch } from 'react-router-dom';
 import { Header, ProfileCard } from '../../components';
 
 import Cookie from 'js-cookie';
-import { Card, List } from 'antd';
+import { Card, List, Divider,Progress } from 'antd';
 import { NavLink } from 'react-router-dom';
 
 import styles from '../../components/ListItemLink/ListItemLink.module.scss';
@@ -51,37 +51,38 @@ export const MasterContainer: React.FC<MasterProps> = (props) => {
 
 
     return (
-        <React.Fragment>
-            <div>
-                <Header title={parsedCookie.user.displayName}></Header>
-                <ProfileCard />
-                <Card title="Courses" style={{ margin: '5vh' }}>
-                    <List
-                        itemLayout="horizontal"
-                        dataSource={items}
-                        renderItem={item => (
-                            <List.Item>
-                                <List.Item.Meta
-                                    title={
-                                        // <a href={path+ "/detail/" + item.id}>{item.title}</a>
-                                        <NavLink exact to={path + "/detail/" + item.id}
-                                            className={styles.component}
-                                            activeClassName={styles.active}>
-                                            {item.title}
-                                        </NavLink>
-                                    }
-                                    description={item.description}
-                                />
-                            </List.Item>
-                        )}
-                    />
-                    {/* <ul>
+        <div>
+            <React.Fragment>
+                {/* <Header title={parsedCookie.user.displayName}></Header> */}
+                <ProfileCard/>
+                <Card className='box-shadow' style={{margin:'5vh'}}>
+                <Progress type="circle" percent={75} />
+                <Divider>Courses</Divider>
+                <List
+                    itemLayout="horizontal"
+                    dataSource={items}
+                    renderItem={item => (
+                    <List.Item>
+                        <List.Item.Meta
+                        title={
+                            // <a href={path+ "/detail/" + item.id}>{item.title}</a>
+                            <NavLink exact to={path+ "/detail/" + item.id}
+                                className={styles.component}
+                                activeClassName={styles.active}>
+                                {item.title}
+                            </NavLink>
+                        }
+                        description={item.description}
+                        />
+                    </List.Item>
+                    )}
+                />
+                {/* <ul>
                     {listItems}
                 </ul> */}
                 </Card>
-            </div>
-
-        </React.Fragment>
+            </React.Fragment>
+        </div>
     );
 };
 
