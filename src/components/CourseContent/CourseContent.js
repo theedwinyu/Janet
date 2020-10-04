@@ -1,15 +1,25 @@
-import React from 'react';
-import { getExampleItems } from '../../state';
-import { useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import ReactMarkdown from 'react-markdown'
+import termsFrPath from "../../md-files/1.md"
+
 
 export const CourseContent = props => {
-    let items = useSelector((store) => getExampleItems(store));
-    const content = items.items[parseInt(props.id.id)];
-    console.log(items);
-    console.log(props)
+    let id = useParams();
+    if (Object.keys(id).length === 0) {
+        id = { id: 0 };
+    }
+    const [state, setState] = useState({
+        terms: null
+    })
+
+    fetch(termsFrPath).then((response) => response.text()).then((text) => {
+        setState({ terms: text })
+    })
+
     return (
         <div>
-            {content.description}
+            <ReactMarkdown source={state.terms} />
         </div>
     )
 }
