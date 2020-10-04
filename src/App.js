@@ -15,7 +15,7 @@ class App extends Component {
         <Router>
           <Switch>
             <Route exact path="/" component={LandingPage} />
-            <Route path="/Login" component={Login} />
+            <Route path="/login" component={Login} />
             <Route path="/courselist"
               render={props => (
                 <MasterDetail MasterType={MasterContainer} masterProps={{}}

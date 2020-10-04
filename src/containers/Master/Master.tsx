@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { RouteProps } from 'react-router-dom';
 import { useRouteMatch } from 'react-router-dom';
 import { Header, ProfileCard } from '../../components';
+import { CheckCircleTwoTone, LoadingOutlined } from '@ant-design/icons';
 
 import Cookie from 'js-cookie';
 import { Card, List, Divider,Progress } from 'antd';
@@ -13,26 +14,41 @@ import styles from '../../components/ListItemLink/ListItemLink.module.scss';
 export interface MasterProps {
 }
 const poorItems = [
-    { id: 0, title: 'What\'s in a Credit Score?', description: 'Find out what affects your score' },
-    { id: 3, title: 'Creating and Implementing a Budget', description: 'Budgeting 101' },
-    { id: 4, title: 'Improving Your Credit Score (Poor)', description: "For those with poor credit score" },
+    { id: 0, title: 'What\'s in a Credit Score?', description: 'Find out what affects your score', courseName: 'course1' },
+    { id: 3, title: 'Creating and Implementing a Budget', description: 'Budgeting 101', courseName: 'course2' },
+    { id: 4, title: 'Improving Your Credit Score (Poor)', description: "For those with poor credit score", courseName: 'course3' },
 ];
 
 const goodItems = [
-    { id: 0, title: 'What\'s in a Credit Score?', description: 'Find out what affects your score' },
-    { id: 1, title: 'Financial Planning', description: 'Staying on track' },
-    { id: 5, title: 'Improving Your Credit Score (Good)', description: "For those with good credit score" },
+    { id: 0, title: 'What\'s in a Credit Score?', description: 'Find out what affects your score', courseName: 'course1' },
+    { id: 1, title: 'Financial Planning', description: 'Staying on track', courseName: 'course2' },
+    { id: 5, title: 'Improving Your Credit Score (Good)', description: "For those with good credit score", courseName: 'course3' },
 ];
 
 const excellentItems = [
-    { id: 0, title: 'What\'s in a Credit Score?', description: 'Find out what affects your score' },
-    { id: 2, title: 'Financial Goals', description: 'Planning for your next big purchase!' },
-    { id: 6, title: 'Improving Your Credit Score (Excellent)', description: "For those with excellent credit score" }
+    { id: 0, title: 'What\'s in a Credit Score?', description: 'Find out what affects your score', courseName: 'course1' },
+    { id: 2, title: 'Financial Goals', description: 'Planning for your next big purchase!', courseName: 'course2' },
+    { id: 6, title: 'Improving Your Credit Score (Excellent)', description: "For those with excellent credit score", courseName: 'course3' }
 ];
+
+
+const calculateProgressScore = (parsedCookie: any) => {
+    let numFinished = 0;
+    if(parsedCookie.progressData.course1) {
+        numFinished += 1;
+    }
+    if(parsedCookie.progressData.course2) {
+        numFinished += 1;
+    }
+    if(parsedCookie.progressData.course3) {
+        numFinished += 1;
+    }
+    
+    return Math.floor(numFinished/3 * 100);
+}
 
 export const MasterContainer: React.FC<MasterProps> = (props) => {
     let { path } = useRouteMatch() as RouteProps;
-
 
     const parsedCookie = JSON.parse(Cookie.get('loggedIn')!);
     const creditScoreRange = parsedCookie.progressData.creditScoreRange;
@@ -49,14 +65,13 @@ export const MasterContainer: React.FC<MasterProps> = (props) => {
         items = excellentItems;
     }
 
-
     return (
         <div>
             <React.Fragment>
                 {/* <Header title={parsedCookie.user.displayName}></Header> */}
                 <ProfileCard/>
                 <Card className='box-shadow' style={{margin:'5vh'}}>
-                <Progress type="circle" percent={75} />
+                <Progress type="circle" percent={calculateProgressScore(parsedCookie)} />
                 <Divider>Courses</Divider>
                 <List
                     itemLayout="horizontal"
@@ -64,6 +79,7 @@ export const MasterContainer: React.FC<MasterProps> = (props) => {
                     renderItem={item => (
                     <List.Item>
                         <List.Item.Meta
+                        avatar={parsedCookie.progressData[item.courseName] ? <CheckCircleTwoTone twoToneColor="#52c41a" /> : <LoadingOutlined />}
                         title={
                             // <a href={path+ "/detail/" + item.id}>{item.title}</a>
                             <NavLink exact to={path+ "/detail/" + item.id}
