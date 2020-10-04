@@ -9,7 +9,7 @@ import { Button, Col, Modal, Select, Typography } from 'antd';
 
 import Cookie from "js-cookie";
 
-import { Redirect} from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 const { Title, Paragraph } = Typography;
 
@@ -37,10 +37,11 @@ class Login extends Component {
         this.addUserToDatabase = this.addUserToDatabase.bind(this);
     }
 
+
     async componentDidUpdate() {
-        if(this.props.user) {
+        if (this.props.user) {
             await this.checkIfUserExists();
-            if(this.state.exists) {
+            if (this.state.exists) {
                 Cookie.set("loggedIn", {
                     'user': this.props.user,
                     'progressData': this.state.progressData,
@@ -55,11 +56,11 @@ class Login extends Component {
     }
 
     async checkIfUserExists() {
-        if(this.props.user) {
+        if (this.props.user) {
             let snapshotExists = false;
             let retrievedData = {}
             await firebaseAppDatabase.ref(`users/${this.props.user.uid}`).once("value", snapshot => {
-                if (snapshot.exists()){
+                if (snapshot.exists()) {
                     snapshotExists = true;
                     retrievedData = snapshot.val();
                 }
@@ -115,33 +116,33 @@ class Login extends Component {
             signInWithGoogle,
         } = this.props;
 
-        if(this.state.redirect) {
-            return <Redirect to="courselist"/> 
+        if (this.state.redirect) {
+            return <Redirect to="courselist" />
         }
 
         return (
             <div className="login-page-background">
                 <span className="login-wrapper box-shadow">
                     <Col span={8} className="login-left">
-                        <div className="login-centered" style={{marginTop:'15vh'}}>
-							<img src={janetLogo} style={{width: '50%', height: 'auto'}}/>
-							<Title>Welcome to Janet!</Title>
-							<br></br>
-							<br></br>
-                            <Button type="primary" onClick={signInWithGoogle} style={{borderRadius: '20px'}}>
+                        <div className="login-centered" style={{ marginTop: '15vh' }}>
+                            <img src={janetLogo} style={{ width: '50%', height: 'auto' }} />
+                            <Title>Welcome to Janet!</Title>
+                            <br></br>
+                            <br></br>
+                            <Button type="primary" onClick={signInWithGoogle} style={{ borderRadius: '20px' }}>
                                 Sign in with Google!
                             </Button>
-						</div>
-					</Col>
+                        </div>
+                    </Col>
                     <Col span={16} className="login-right-background" />
-                        
+
                     <Modal
                         title="Select your credit score"
                         visible={this.state.visible && user}
                         onOk={this.handleOk}
                         onCancel={this.handleCancel}
                         okText="Register"
-                        >
+                    >
                         <Select defaultValue="good" onChange={this.onChange}>
                             <Select.Option value="poor">300-669</Select.Option>
                             <Select.Option value="good">670-739</Select.Option>
