@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { RouteProps } from 'react-router-dom';
 import { useRouteMatch } from 'react-router-dom';
 import { Header, ProfileCard } from '../../components';
-import { CheckCircleTwoTone, LoadingOutlined } from '@ant-design/icons';
+import { CheckCircleTwoTone, MinusCircleOutlined } from '@ant-design/icons';
 
 import Cookie from 'js-cookie';
 import { Card, List, Divider,Progress } from 'antd';
@@ -79,7 +79,7 @@ export const MasterContainer: React.FC<MasterProps> = (props) => {
                     renderItem={item => (
                     <List.Item>
                         <List.Item.Meta
-                        avatar={parsedCookie.progressData[item.courseName] ? <CheckCircleTwoTone twoToneColor="#52c41a" /> : <LoadingOutlined />}
+                        avatar={parsedCookie.progressData[item.courseName] ? <CheckCircleTwoTone twoToneColor="#52c41a" /> : <MinusCircleOutlined />}
                         title={
                             // <a href={path+ "/detail/" + item.id}>{item.title}</a>
                             <NavLink exact to={path+ "/detail/" + item.id}
