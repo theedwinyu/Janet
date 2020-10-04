@@ -47,21 +47,18 @@ html, body {
 
 .image1 {
   background: url(./assets/m1image.png);
-  background-size: auto;
   height: 330px;
   width: 470px;
 }
 
 .image2 {
   background: url(./assets/m2image.png);
-  background-size: auto;
   height: 530px;
   width: 550px;
 }
 
 .image3 {
   background: url(./assets/m3image.png);
-  background-size: auto;
   height: 130px;
   width: 260px;
 }
@@ -81,7 +78,7 @@ html, body {
 }
 
 .login-page-background {
-  background-color: #c9fcc7;
+  background-color: #acd2e0;
   height: 100%;
   display: flex;
   justify-content: center;

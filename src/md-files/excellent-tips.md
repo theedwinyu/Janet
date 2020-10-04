@@ -1,6 +1,5 @@
-### Maintaining an Excellent Credit Score
-
 1. Keep Your Credit Card Balances Low
+    
     The higher your credit card balance in relation to your credit limit, the worse your credit score will be. Your combined credit card balances should be within 30 percent of your combined credit limits to maintain a good credit score. That’s $300 on credit cards with combined limits of $1,000.
 
     Charging more than 30 percent of your credit limit is risky even if you plan to pay off the balance when your billing statement arrives. Card issuers typically report the balance when your statement closes, so that's the number that will be reflected on your credit report. It's a good idea to keep tabs on your accounts online and pay enough to reduce your balances to less than 30 percent just before the billing month closes.
