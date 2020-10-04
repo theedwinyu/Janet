@@ -5,7 +5,7 @@ import { useRouteMatch } from 'react-router-dom';
 import { Header, ListItemLink, ProfileCard } from '../../components';
 import { Items, Item, getExampleItems, AppStore } from '../../state';
 import Cookie from 'js-cookie';
-import { Card, List } from 'antd';
+import { Card, List, Divider,Progress } from 'antd';
 import { NavLink } from 'react-router-dom';
 
 import styles from '../../components/ListItemLink/ListItemLink.module.scss';
@@ -26,11 +26,13 @@ export const MasterContainer: React.FC<MasterProps> = (props) => {
     const parsedCookie = JSON.parse(Cookie.get('loggedIn')!);
     
     return (
-        <React.Fragment>
-            <div>
-                <Header title={parsedCookie.user.displayName}></Header>
-                <ProfileCard />
-                <Card title="Courses" style={{margin:'5vh'}}>
+        <div>
+            <React.Fragment>
+                {/* <Header title={parsedCookie.user.displayName}></Header> */}
+                <ProfileCard/>
+                <Card className='box-shadow' style={{margin:'5vh'}}>
+                <Progress type="circle" percent={75} />
+                <Divider>Courses</Divider>
                 <List
                     itemLayout="horizontal"
                     dataSource={items}
@@ -54,9 +56,8 @@ export const MasterContainer: React.FC<MasterProps> = (props) => {
                     {listItems}
                 </ul> */}
                 </Card>
-            </div>
-           
-        </React.Fragment>
+            </React.Fragment>
+        </div>
     );
 };
 

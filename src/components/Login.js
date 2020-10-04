@@ -6,6 +6,7 @@ import 'firebase/auth';
 import firebaseConfig from '../firebaseConfig';
 import janetLogo from '../assets/janet_card.png';
 import { Button, Col, Modal, Select, Typography } from 'antd';
+import { GoogleOutlined } from '@ant-design/icons';
 
 import Cookie from "js-cookie";
 
@@ -128,7 +129,7 @@ class Login extends Component {
 							<Title>Welcome to Janet!</Title>
 							<br></br>
 							<br></br>
-                            <Button type="primary" onClick={signInWithGoogle} style={{borderRadius: '20px'}}>
+                            <Button type="primary" onClick={signInWithGoogle} style={{borderRadius: '20px'}} icon={<GoogleOutlined />}>
                                 Sign in with Google!
                             </Button>
 						</div>
